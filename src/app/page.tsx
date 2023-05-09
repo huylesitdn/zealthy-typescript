@@ -5,6 +5,8 @@ import { Box, Avatar, Typography } from "@mui/material";
 
 import { BadgetDetail, Carousel } from "@/components/home";
 
+import { actionData, careDate } from "@/data";
+
 const Wrapper = styled(Box)(() => ({
   width: "100%",
   background: "#FFFAF2",
@@ -65,6 +67,11 @@ const ViewIcon = styled(Box)(({ theme }) => ({
   borderRadius: "50%",
   overflow: "hidden",
   boxSizing: "border-box",
+  padding: "8px",
+
+  img: {
+    // width: "100%",
+  },
 
   [theme.breakpoints.down("md")]: {
     width: "40px",
@@ -72,89 +79,6 @@ const ViewIcon = styled(Box)(({ theme }) => ({
   },
 }));
 
-const actionData = [
-  {
-    icon: "",
-    title: "Schedule a follow-up appointment",
-    text: "Your Zealthy provider requested you schedule a follow-up during your last visit.",
-    type: "danger",
-  },
-  {
-    icon: "",
-    title: "Reschedule Zealthy visit",
-    text: "We want to meet with you! Please go ahead and reschedule your visit.",
-    type: "danger",
-  },
-  {
-    icon: "",
-    title: "Schedule lab work or upload recent labs",
-    text: "Zealthy ordered lab work for you. Schedule an appointment at a Quest or Labcorp location near you, or upload recent lab work that you completed.",
-    type: "danger",
-  },
-  {
-    icon: "",
-    title: "Please update payment method",
-    text: "Your card information is no longer valid. To continue your Zealthy membership, please update your payment method.",
-    type: "danger",
-  },
-  {
-    icon: "",
-    title: "Please update insurance information",
-    text: "Your insurance information appears to be inactive. If it recently changed, please update here.",
-    type: "danger",
-  },
-  {
-    icon: "",
-    title: "Please update insurance information",
-    text: "Your insurance information appears to be inactive. If it recently changed, please update here.",
-    type: "danger",
-  },
-  {
-    icon: "",
-    title: "Please update insurance information",
-    text: "Your insurance information appears to be inactive. If it recently changed, please update here.",
-    type: "danger",
-  },
-  {
-    icon: "",
-    title: "Please update insurance information",
-    text: "Your insurance information appears to be inactive. If it recently changed, please update here.",
-    type: "danger",
-  },
-];
-
-const careDate = [
-  {
-    icon: "",
-    title: "Schedule a visit or request a new prescription",
-    text: "Same/next-day appointments over video, phone or message",
-    type: "default",
-  },
-  {
-    icon: "",
-    title: "Schedule a visit or request a new prescription",
-    text: "Same/next-day appointments over video, phone or message",
-    type: "default",
-  },
-  {
-    icon: "",
-    title: "Schedule a visit or request a new prescription",
-    text: "Same/next-day appointments over video, phone or message",
-    type: "default",
-  },
-  {
-    icon: "",
-    title: "Schedule a visit or request a new prescription",
-    text: "Same/next-day appointments over video, phone or message",
-    type: "default",
-  },
-  {
-    icon: "",
-    title: "Schedule a visit or request a new prescription",
-    text: "Same/next-day appointments over video, phone or message",
-    type: "default",
-  },
-];
 
 export default function Home() {
   const handleView = () => {};
@@ -169,18 +93,18 @@ export default function Home() {
     );
   };
 
-  const ActionIcon = () => {
+  const ActionIcon = ({ image }: { image: any }) => {
     return (
       <ViewIcon>
-        <Image alt="" src="/images/clock.png" width={24} height={24} />
+        <Image alt="" src={image} />
       </ViewIcon>
     );
   };
 
-  const CareIcon = () => {
+  const CareIcon = ({ image }: { image: any }) => {
     return (
       <ViewIcon sx={{ background: "#8ACDA0", padding: "10px" }}>
-        <Image alt="" src="/images/clock.png" width={24} height={24} />
+        <Image alt="" src={image} />
       </ViewIcon>
     );
   };
@@ -210,11 +134,11 @@ export default function Home() {
         <Section>
           <SubTitle>Action items</SubTitle>
 
-          {actionData.map((item, i) => (
+          {actionData && actionData.map((item: any, i: number) => (
             <BadgetDetail
               key={i}
               type={item.type}
-              icon={<ActionIcon />}
+              icon={<ActionIcon image={item.icon} />}
               text={item.title}
               time={item.text}
               onView={handleView}
@@ -225,11 +149,11 @@ export default function Home() {
         <Section>
           <SubTitle>Get the care you need</SubTitle>
 
-          {careDate.map((item, i) => (
+          {careDate && careDate.map((item: any, i: number) => (
             <BadgetDetail
               key={i}
               type={item.type}
-              icon={<CareIcon />}
+              icon={<CareIcon image={item.icon} />}
               text={item.title}
               time={item.text}
               onView={handleView}
