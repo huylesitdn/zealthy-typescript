@@ -26,6 +26,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import BackImg from "@/assets/images/back-left.png";
 import ArrowLeftImg from "@/assets/images/arrow-left.svg";
 import MenusImg from "@/assets/images/menus.svg";
+import UserImg from "@/assets/images/care5.png";
 
 const Wrapper = styled(AppBar)(({ theme }) => ({
   background: "#fff",
@@ -107,7 +108,17 @@ const MenuCustom = styled(MenuItem)(({ theme }) => ({
   },
 }));
 
-const MenuItemCustom = styled(MenuItem)(() => ({}));
+const UserAvatar = styled(IconButton)(() => ({
+  width: "44px",
+  height: "44px",
+  borderRadius: "50%",
+  overflow: "hidden",
+  background: "#8ACDA0",
+
+  "&:hover": {
+    background: "#8ACDA0",
+  }
+}));
 
 const MainMenus = styled(Box)(({ theme }) => ({
   justifyContent: "end",
@@ -197,13 +208,14 @@ const Header = () => {
             sx={{ flexGrow: 0, display: { xs: "none", md: "inline-block" } }}
           >
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  sx={{ width: "32px", height: "32px" }}
+              <UserAvatar onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                {/* <Avatar
+                  sx={{ width: "44px", height: "44px", background: "#8ACDA0" }}
                   alt="Remy Sharp"
-                  src="/static/images/avatar/2.jpg"
-                />
-              </IconButton>
+                  src={UserImg}
+                /> */}
+                <Image alt="" src={UserImg} />
+              </UserAvatar>
             </Tooltip>
             <Menu
               sx={{ mt: "45px" }}
