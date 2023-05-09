@@ -23,12 +23,19 @@ import AdbIcon from "@mui/icons-material/Adb";
 import WestIcon from "@mui/icons-material/West";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
+import BackImg from "@/assets/images/back-left.png";
+import ArrowLeftImg from "@/assets/images/arrow-left.svg";
+import MenusImg from "@/assets/images/menus.svg";
+
 const Wrapper = styled(AppBar)(({ theme }) => ({
   background: "#fff",
   borderBottom: "1px solid #ccc",
   boxShadow: "none",
 
   [theme.breakpoints.down("md")]: {
+    background: "#FFFAF2",
+    border: "none",
+
     ".MuiToolbar-root": {
       minHeight: "48px",
     },
@@ -39,15 +46,15 @@ const Content = styled(Box)(({ theme }) => ({
   padding: "20px 56px",
 
   [theme.breakpoints.down("xl")]: {
-    padding: "14px 24px",
+    padding: "14px 25px",
   },
 
   [theme.breakpoints.down("lg")]: {
-    padding: "8px 16px",
+    padding: "8px 25px",
   },
 
   [theme.breakpoints.down("md")]: {
-    padding: "0 16px",
+    padding: "0 25px",
   },
 }));
 
@@ -76,6 +83,7 @@ const MobileMenus = styled(IconButton)(({ theme }) => ({
 const BackIcon = styled(IconButton)(({ theme }) => ({
   color: "#1B1B1B",
   marginRight: "60px",
+  padding: 0,
 
   svg: {
     fontSize: "16px",
@@ -156,17 +164,18 @@ const Header = () => {
       <Content>
         <Toolbar disableGutters>
           <LeftBar>
-            <BackIcon>
-              <WestIcon sx={{ display: { xs: "none", md: "inline-block" } }} />
-              <ArrowBackIosIcon
-                sx={{ display: { xs: "inline-block", md: "none" } }}
-              />
+            <BackIcon sx={{ display: { xs: "none", md: "inline-flex" } }}>
+              {/* <WestIcon sx={{ display: { xs: "none", md: "inline-block" } }} /> */}
+              <Image alt="back icon" src={BackImg} />
+            </BackIcon>
+            <BackIcon sx={{ display: { xs: "inline-flex", md: "none" } }}>
+              <Image alt="back icon" src={ArrowLeftImg} />
             </BackIcon>
             <Link href="/" style={{ display: "inline-flex" }}>
               <Image alt="" src="/images/logo.svg" width={117} height={24} />
             </Link>
             <MobileMenus>
-              <MenuIcon />
+              <Image alt="menus" src={MenusImg} width={16} height={15} />
             </MobileMenus>
           </LeftBar>
 
